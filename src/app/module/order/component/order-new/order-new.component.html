@@ -1,1 +1,72 @@
-<p>order-new works!</p>
+<div>
+    <h4>Dane klientów</h4>
+    <label for="clientsData">Dane klienta/klientów: </label><br>
+    <input type="text" id="clientsData" [(ngModel)]="clientsData">
+    <br>
+    <h4>Dane zlecenia</h4>
+    <label for="internalCaseNumber">Wewnętrzny numer sprawy: </label><br>
+    <!-- <input type="text" id="internalCaseNumber" [(ngModel)]="internalCaseNumber"><br> -->
+    <span style="color: cornflowerblue;">Pole musi być wypełnione ale powinien to robić system przy zapisie</span>
+    <br>
+    <label for="externalCaseNumber">Zewnętrzny numer sprawy: </label><br>
+    <input type="text" id="externalCaseNumber" [(ngModel)]="externalCaseNumber"><br>
+    <span style="color: cornflowerblue;">Pole może zostać puste</span>
+    <br>
+    <label for="segment">Klasa pojazdu: </label><br>
+    <select id="segment" name="segment" [(ngModel)]="segment">
+        <option value="A">A</option>
+        <option value="B">B</option>
+        <option value="C">C</option>
+        <option value="D">D</option>
+        <option value="suv">SUV</option>
+    </select><br>
+    <span style="color: cornflowerblue;">Klasy zaczytane z dotępnych na backendzie.</span>
+    <br>
+    <h4>Szczegóły planowanego podstawienia pojazdu</h4>
+    <label for="deliveryAddress">Adres dostawy (ulica, numer budynku, numer lokalu, kod pocztowy, miasto, kraj): </label><br>
+    <input type="text" id="deliveryAddress" [(ngModel)]="deliveryAddress"><br>
+    <span style="color: cornflowerblue;">Pole może zostać puste</span>
+    <br>
+    <label for="deliveryDate">Data: </label><br>
+    <input type="date" id="deliveryDate" name="deliveryDate" value="2018-07-22" min="2018-01-01" max="2118-12-31" [(ngModel)]="deliveryDate"><br>
+    <span style="color: cornflowerblue;">Pole może zostać puste</span>
+    <br>
+    <label for="deliveryTime">Godzina: </label><br>
+    <input type="time" id="deliveryTime" name="deliveryTime" min="00:00" max="00:00">
+    <br>
+    <label for="deliveryComments">Uwagi do dostawy: </label><br> 
+    <textarea type="text" id="deliveryComments" [(ngModel)]="deliveryComments" rows="4" cols="50"></textarea><br>
+    <span style="color: cornflowerblue;">Pole może zostać puste</span>
+    <br>    
+    <label for="deliveryBranch">Oddział realizujący: </label><br>
+    <select id="deliveryBranch" name="deliveryBranch"  [(ngModel)]="deliveryBranch">
+        <option value="wroclaw-lotnisko">Wrocław - Lotnisko ( Graniczna 190, 54-530 Wrocław, Polska )</option>
+        <option value="gdansk-lotnisko">Gdańsk - Lotnisko ( Juliusza Słowackiego 210, 80-298 Gdańsk, Polska )</option>
+    </select><br>
+    <span style="color: cornflowerblue;">Oddziały zaczytane z dostępnych na backendzie.</span>
+    <br>
+    <h4>Szczegóły planowanego zwrotu pojazdu</h4>
+    <label for="returnAddress">Adres zwrotu (ulica, numer budynku, numer lokalu, kod pocztowy, miasto, kraj): </label><br>
+    <input type="text" id="returnAddress" [(ngModel)]="returnAddress"><br>
+    <span style="color: cornflowerblue;">Pole może zostać puste</span>
+    <br>
+    <label for="returnDate">Data: </label><br>
+    <input type="date" id="returnDate" name="returnDate" value="2018-07-22" min="2018-01-01" max="2118-12-31" [(ngModel)]="returnDate"><br>
+    <span style="color: cornflowerblue;">Pole może zostać puste</span>
+    <br>
+    <label for="returnTime">Godzina: </label><br>
+    <input type="time" id="returnTime" name="returnTime" min="00:00" max="00:00">
+    <br>
+    <label for="returnComments">Uwagi do zwrotu: </label><br> 
+    <textarea type="text" id="returnComments" [(ngModel)]="returnComments" rows="4" cols="50"></textarea><br>
+    <span style="color: cornflowerblue;">Pole może zostać puste</span>
+    <br>    
+    <label for="returnBranch">Oddział realizujący: </label><br>
+    <select id="returnBranch" name="returnBranch"  [(ngModel)]="returnBranch">
+        <option value="wroclaw-lotnisko">Wrocław - Lotnisko ( Graniczna 190, 54-530 Wrocław, Polska )</option>
+        <option value="gdansk-lotnisko">Gdańsk - Lotnisko ( Juliusza Słowackiego 210, 80-298 Gdańsk, Polska )</option>
+    </select><br>
+    <span style="color: cornflowerblue;">Oddziały zaczytane z dostępnych na backendzie.</span>
+</div>
+
+<button (click)="show()">Show data</button>

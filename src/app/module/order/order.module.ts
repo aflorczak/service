@@ -7,6 +7,7 @@ import { OrderEditComponent } from './component/order-edit/order-edit.component'
 import { OrderDetailsComponent } from './component/order-details/order-details.component';
 import { OrderWrapperComponent } from './component/order-wrapper/order-wrapper.component';
 import { OrderRoutingModule } from './order-routing.module';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -21,6 +22,7 @@ import { OrderRoutingModule } from './order-routing.module';
   ],
   imports: [
     CommonModule,
+    FormsModule,
     OrderRoutingModule
   ]
 })
