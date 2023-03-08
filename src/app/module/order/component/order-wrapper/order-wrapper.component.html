@@ -1,7 +1,7 @@
 <div style="display: flex; justify-content: space-around;">
-    <a routerLink="/orders/dashboard">Pulpit</a>
-    <a routerLink="/orders/new">Nowe zlecenie</a>
-    <a routerLink="/orders/">Wszystkie zlecenia</a>
+    <a routerLink="/orders/dashboard" (click)="open('/orders/dashboard')">Pulpit</a>
+    <a routerLink="/orders/new" (click)="open('/orders/new')">Nowe zlecenie</a>
+    <a routerLink="/orders" (click)="open('/orders')">Wszystkie zlecenia</a>
 </div>
 <hr>
 <router-outlet></router-outlet> 

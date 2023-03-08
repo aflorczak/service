@@ -1,72 +1,83 @@
 <div>
-    <h4>Dane klientów</h4>
-    <label for="clientsData">Dane klienta/klientów: </label><br>
-    <input type="text" id="clientsData" [(ngModel)]="clientsData">
+    <span style="font-size: 150%; color: red;">Zrobić walidacje formularza</span>
+    <div style="background-color:bisque; margin: 15px 0; padding: 15px; border-radius: 15px;">
+        <h4>Dane klientów</h4>
+        <label for="clientsData">Dane klienta/klientów: </label><br>
+        <input type="text" id="clientsData" [(ngModel)]="clientsData">
+    </div>
+    <div style="background-color:bisque; margin: 15px 0; padding: 15px; border-radius: 15px;">
+        <h4>Dane zlecenia</h4>
+        <label for="principal">Zleceniodawca: </label><br>
+        <select id="principal" name="principal" [(ngModel)]="principal">
+            <option value="LINK4">LINK 4</option>
+            <option value="PZU">PZU</option>
+            <option value="INDYWIDUAL-PHONE">Klient indywidualny ( zamówienie telefoniczne )</option>
+        </select>
+        <br>
+        <label for="externalCaseNumber">Zewnętrzny numer sprawy: </label><br>
+        <input type="text" id="externalCaseNumber" [(ngModel)]="externalCaseNumber"><br>
+        <span style="color: cornflowerblue;">Pole może zostać puste</span>
+        <br>
+        <label for="segment">Klasa pojazdu: </label><br>
+        <select id="segment" name="segment" [(ngModel)]="segment">
+            <option value="A">A</option>
+            <option value="B">B</option>
+            <option value="C">C</option>
+            <option value="D">D</option>
+            <option value="suv">SUV</option>
+        </select><br>
+        <span style="color: cornflowerblue;">Klasy zaczytane z dotępnych na backendzie.</span>
+    </div>
+    <div style="background-color:bisque; margin: 15px 0; padding: 15px; border-radius: 15px;">
+        <h4>Szczegóły planowanego podstawienia pojazdu</h4>
+        <label for="deliveryAddress">Adres dostawy (ulica, numer budynku, numer lokalu, kod pocztowy, miasto, kraj): </label><br>
+        <input type="text" id="deliveryAddress" [(ngModel)]="deliveryAddress"><br>
+        <span style="color: cornflowerblue;">Pole może zostać puste</span>
+        <br>
+        <label for="deliveryDate">Data: </label><br>
+        <input type="date" id="deliveryDate" name="deliveryDate" value="2018-07-22" min="2018-01-01" max="2118-12-31" [(ngModel)]="deliveryDate"><br>
+        <span style="color: cornflowerblue;">Pole może zostać puste</span>
+        <br>
+        <label for="deliveryTime">Godzina: </label><br>
+        <input type="time" id="deliveryTime" name="deliveryTime" min="00:00" max="00:00" [(ngModel)]="deliveryTime">
+        <br>
+        <label for="deliveryComments">Uwagi do dostawy: </label><br> 
+        <textarea type="text" id="deliveryComments" [(ngModel)]="deliveryComments" rows="4" cols="50"></textarea><br>
+        <span style="color: cornflowerblue;">Pole może zostać puste</span>
+        <br>    
+        <label for="deliveryBranch">Oddział realizujący: </label><br>
+        <select id="deliveryBranch" name="deliveryBranch"  [(ngModel)]="deliveryBranch">
+            <option value="wroclaw-lotnisko">Wrocław - Lotnisko ( Graniczna 190, 54-530 Wrocław, Polska )</option>
+            <option value="gdansk-lotnisko">Gdańsk - Lotnisko ( Juliusza Słowackiego 210, 80-298 Gdańsk, Polska )</option>
+        </select><br>
+        <span style="color: cornflowerblue;">Oddziały zaczytane z dostępnych na backendzie.</span>
+    </div>
     <br>
-    <h4>Dane zlecenia</h4>
-    <label for="internalCaseNumber">Wewnętrzny numer sprawy: </label><br>
-    <!-- <input type="text" id="internalCaseNumber" [(ngModel)]="internalCaseNumber"><br> -->
-    <span style="color: cornflowerblue;">Pole musi być wypełnione ale powinien to robić system przy zapisie</span>
-    <br>
-    <label for="externalCaseNumber">Zewnętrzny numer sprawy: </label><br>
-    <input type="text" id="externalCaseNumber" [(ngModel)]="externalCaseNumber"><br>
-    <span style="color: cornflowerblue;">Pole może zostać puste</span>
-    <br>
-    <label for="segment">Klasa pojazdu: </label><br>
-    <select id="segment" name="segment" [(ngModel)]="segment">
-        <option value="A">A</option>
-        <option value="B">B</option>
-        <option value="C">C</option>
-        <option value="D">D</option>
-        <option value="suv">SUV</option>
-    </select><br>
-    <span style="color: cornflowerblue;">Klasy zaczytane z dotępnych na backendzie.</span>
-    <br>
-    <h4>Szczegóły planowanego podstawienia pojazdu</h4>
-    <label for="deliveryAddress">Adres dostawy (ulica, numer budynku, numer lokalu, kod pocztowy, miasto, kraj): </label><br>
-    <input type="text" id="deliveryAddress" [(ngModel)]="deliveryAddress"><br>
-    <span style="color: cornflowerblue;">Pole może zostać puste</span>
-    <br>
-    <label for="deliveryDate">Data: </label><br>
-    <input type="date" id="deliveryDate" name="deliveryDate" value="2018-07-22" min="2018-01-01" max="2118-12-31" [(ngModel)]="deliveryDate"><br>
-    <span style="color: cornflowerblue;">Pole może zostać puste</span>
-    <br>
-    <label for="deliveryTime">Godzina: </label><br>
-    <input type="time" id="deliveryTime" name="deliveryTime" min="00:00" max="00:00">
-    <br>
-    <label for="deliveryComments">Uwagi do dostawy: </label><br> 
-    <textarea type="text" id="deliveryComments" [(ngModel)]="deliveryComments" rows="4" cols="50"></textarea><br>
-    <span style="color: cornflowerblue;">Pole może zostać puste</span>
-    <br>    
-    <label for="deliveryBranch">Oddział realizujący: </label><br>
-    <select id="deliveryBranch" name="deliveryBranch"  [(ngModel)]="deliveryBranch">
-        <option value="wroclaw-lotnisko">Wrocław - Lotnisko ( Graniczna 190, 54-530 Wrocław, Polska )</option>
-        <option value="gdansk-lotnisko">Gdańsk - Lotnisko ( Juliusza Słowackiego 210, 80-298 Gdańsk, Polska )</option>
-    </select><br>
-    <span style="color: cornflowerblue;">Oddziały zaczytane z dostępnych na backendzie.</span>
-    <br>
-    <h4>Szczegóły planowanego zwrotu pojazdu</h4>
-    <label for="returnAddress">Adres zwrotu (ulica, numer budynku, numer lokalu, kod pocztowy, miasto, kraj): </label><br>
-    <input type="text" id="returnAddress" [(ngModel)]="returnAddress"><br>
-    <span style="color: cornflowerblue;">Pole może zostać puste</span>
-    <br>
-    <label for="returnDate">Data: </label><br>
-    <input type="date" id="returnDate" name="returnDate" value="2018-07-22" min="2018-01-01" max="2118-12-31" [(ngModel)]="returnDate"><br>
-    <span style="color: cornflowerblue;">Pole może zostać puste</span>
-    <br>
-    <label for="returnTime">Godzina: </label><br>
-    <input type="time" id="returnTime" name="returnTime" min="00:00" max="00:00">
-    <br>
-    <label for="returnComments">Uwagi do zwrotu: </label><br> 
-    <textarea type="text" id="returnComments" [(ngModel)]="returnComments" rows="4" cols="50"></textarea><br>
-    <span style="color: cornflowerblue;">Pole może zostać puste</span>
-    <br>    
-    <label for="returnBranch">Oddział realizujący: </label><br>
-    <select id="returnBranch" name="returnBranch"  [(ngModel)]="returnBranch">
-        <option value="wroclaw-lotnisko">Wrocław - Lotnisko ( Graniczna 190, 54-530 Wrocław, Polska )</option>
-        <option value="gdansk-lotnisko">Gdańsk - Lotnisko ( Juliusza Słowackiego 210, 80-298 Gdańsk, Polska )</option>
-    </select><br>
-    <span style="color: cornflowerblue;">Oddziały zaczytane z dostępnych na backendzie.</span>
+    <div style="background-color:bisque; margin: 15px 0; padding: 15px; border-radius: 15px;">
+        <h4>Szczegóły planowanego zwrotu pojazdu</h4>
+        <label for="returnAddress">Adres zwrotu (ulica, numer budynku, numer lokalu, kod pocztowy, miasto, kraj): </label><br>
+        <input type="text" id="returnAddress" [(ngModel)]="returnAddress"><br>
+        <span style="color: cornflowerblue;">Pole może zostać puste</span>
+        <br>
+        <label for="returnDate">Data: </label><br>
+        <input type="date" id="returnDate" name="returnDate" value="2018-07-22" min="2018-01-01" max="2118-12-31" [(ngModel)]="returnDate"><br>
+        <span style="color: cornflowerblue;">Pole może zostać puste</span>
+        <br>
+        <label for="returnTime">Godzina: </label><br>
+        <input type="time" id="returnTime" name="returnTime" min="00:00" max="00:00" [(ngModel)]="returnTime">
+        <br>
+        <label for="returnComments">Uwagi do zwrotu: </label><br> 
+        <textarea type="text" id="returnComments" [(ngModel)]="returnComments" rows="4" cols="50"></textarea><br>
+        <span style="color: cornflowerblue;">Pole może zostać puste</span>
+        <br>    
+        <label for="returnBranch">Oddział realizujący: </label><br>
+        <select id="returnBranch" name="returnBranch"  [(ngModel)]="returnBranch">
+            <option value="wroclaw-lotnisko">Wrocław - Lotnisko ( Graniczna 190, 54-530 Wrocław, Polska )</option>
+            <option value="gdansk-lotnisko">Gdańsk - Lotnisko ( Juliusza Słowackiego 210, 80-298 Gdańsk, Polska )</option>
+        </select><br>
+        <span style="color: cornflowerblue;">Oddziały zaczytane z dostępnych na backendzie.</span>
+    </div>
+    
+    <input type="button" [(ngModel)]="buttonMessage" (click)="createNewOrder()" style="border-radius: 15px; background-color: greenyellow;width: 100%; height: 100px;"><br><br>
+    <input type="button" value="Reset" (click)="resetForm()" style="border-radius: 15px; background-color: rgb(216, 71, 71);width: 100%; height: 100px;">
 </div>
-
-<button (click)="show()">Show data</button>

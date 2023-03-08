@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 import { OrderDashboardComponent } from './component/order-dashboard/order-dashboard.component';
 import { OrderNewComponent } from './component/order-new/order-new.component';
 import { OrderListComponent } from './component/order-list/order-list.component';
@@ -22,6 +23,7 @@ import { FormsModule } from '@angular/forms';
   ],
   imports: [
     CommonModule,
+    HttpClientModule,
     FormsModule,
     OrderRoutingModule
   ]

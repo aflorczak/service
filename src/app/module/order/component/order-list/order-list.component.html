@@ -1,14 +1,31 @@
-<div style="background-color: rgb(207, 216, 233); border-radius: 15px; padding: 15px;margin: 15px 0;">
-    Id: 1 <br>
-    Wewnętrzny numer zlecenia: CF230307000001 <br>
-    Zewnętrzny numer zlecenia: ZA230307000021 <br>
-    Dane klienta/klientów: Stefan Wymyślony, Stefania Wymyślona<br>
-    Podstawienie: 07.03.2023, 15:00, ul. Zupełnie Inna 49, 59-635 Miastko, Polska<br>
-    Zwrot: 17.03.2023, 15:00, ul. Zupełnie Inna 49, 59-635 Miastko, Polska<br>
-    <a routerLink="./1">Pokaż szczegóły zlecenia</a><br>
-    <a routerLink="/rentals/new?orderId=1">Realizuj</a><br>
-    <a routerLink="./1/edit">Edytuj</a><br>
-    <a routerLink="./cancelled?orderId=1"><span style="color: orange;">Anulacja</span></a> /
-    <a routerLink="./cancelled/delete?orderId=1"><span style="color: orange;">Cofnij anulacje</span></a><br>
-    <a routerLink="#"><span style="color: red;">Usuń ( akceptacja kierownika )</span></a>
-</div>
+<div *ngIf="error; then thenErrorBlock else elseErrorBlock"></div>
+
+<ng-template #thenErrorBlock>
+    Mamy błąd pobierania danych
+</ng-template>
+
+<ng-template #elseErrorBlock>
+    <div *ngIf="orders; then thenBlock else elseBlock"></div>
+</ng-template>
+
+<ng-template #thenBlock>
+    {{emptyArray}}
+    <!-- Napis że brak danych do wyświetlenia jak jest pusta tablica -->
+    <div style="background-color: rgb(207, 216, 233); border-radius: 15px; padding: 15px;margin: 15px 0;" *ngFor="let order of orders">
+        Numer sprawy: <b>{{order.internalCaseNumber}}</b> <br>
+        Zewnętrzny numer sprawy: <b>{{order.externalCaseNumber}}</b> <br>
+        Dane klienta/klientów: <b>{{order.clientsData}}</b><br>
+        Podstawienie: <b>{{order.deliveryDate}}, {{order.deliveryTime}}, {{order.deliveryAddress}}</b><br>
+        Zwrot: <b>{{order.returnDate}}, {{order.returnTime}}, {{order.returnAddress}}</b><br>
+        <a routerLink="./{{order.id}}">Pokaż szczegóły zlecenia</a><br>
+        <a routerLink="/rentals/new?orderId={{order.id}}">Realizuj</a><br>
+        <a routerLink="./{{order.id}}/edit">Edytuj</a><br>
+        <a routerLink="./cancelled?orderId={{order.id}}"><span style="color: orange;">Anulacja</span></a> /
+        <a routerLink="./cancelled/delete?orderId={{order.id}}"><span style="color: orange;">Cofnij anulacje</span></a><br>
+        <button (click)="deleteOrderById(order.id)"><span style="color: red;">Usuń ( akceptacja kierownika )</span></button>
+    </div>
+</ng-template>
+
+<ng-template #elseBlock>
+    Trwa ładowanie danych
+</ng-template>

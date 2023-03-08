@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ErrorModule } from './module/error/error.module';
+import { HomeModule } from './module/home/home.module';
 import { OrderModule } from './module/order/order.module';
 
 @NgModule({
@@ -14,6 +15,7 @@ import { OrderModule } from './module/order/order.module';
     BrowserModule,
     AppRoutingModule,
     OrderModule,
+    HomeModule,
     ErrorModule
   ],
   providers: [],

@@ -1,1 +1,54 @@
-<p>order-details works!</p>
+<div *ngIf="error; then errorThenBlock else errorElseBlock"></div>
+
+<ng-template #errorThenBlock>
+    {{errorMessage}}
+</ng-template>
+
+<ng-template #errorElseBlock>
+    <div *ngIf="order; then thenBlock else elseBlock"></div>
+</ng-template>
+
+<ng-template #thenBlock>
+    Id zlecenia:<br>
+    {{order?.id}}<br><br>
+    Altualny status:<br>
+    {{order?.status}}<br><br>
+    Dane klienta/ klientów:<br>
+    {{order?.clientsData}}<br><br>
+    Zleceniodawca:<br>
+    {{order?.principal}}<br><br>
+    Wewnętrzny numer sprawy:<br>
+    {{order?.internalCaseNumber}}<br><br>
+    Zewnętrzny numer sprawy:<br>
+    {{order?.externalCaseNumber}}<br><br>
+    Segment:<br>
+    {{order?.segment}}<br><br>
+    Adres dostawy:<br>
+    {{order?.deliveryAddress}}<br><br>
+    Data dostawy:<br>
+    {{order?.deliveryDate}}<br><br>
+    Godzina dostawy:<br>
+    {{order?.deliveryTime}}<br><br>
+    Komentarz dostawy:<br>
+    {{order?.deliveryComments}}<br><br>
+    Oddział wykonujący dostawę:<br>
+    {{order?.deliveryBranch}}<br><br>
+    Adres zwrotu:<br>
+    {{order?.returnAddress}}<br><br>
+    Data zwrotu:<br>
+    {{order?.returnDate}}<br><br>
+    Godzina zwrotu:<br>
+    {{order?.returnTime}}<br><br>
+    Komentarz zwrotu:<br>
+    {{order?.returnComments}}<br><br>
+    Oddział wykonujący zwrot:<br>
+    {{order?.returnBranch}}<br><br>
+    Czy sprawa jest zarchiwizowana:<br>
+    {{order?.archive}}<br><br>
+    Komentarz do anulacji:<br>
+    {{order?.reasonForCancelingTheOrder}}<br><br>
+</ng-template>
+
+<ng-template #elseBlock>
+    Trwa ładowanie danych
+</ng-template>
