@@ -1,3 +1,9 @@
+Dozwolone operacje:<br>
+<a routerLink="/rentals/new?orderId={{order?.id}}">Realizuj</a><br>
+<a routerLink="./edit">Edytuj</a><br>
+<a routerLink="./cancelled?orderId={{order?.id}}"><span style="color: orange;">Anulacja</span></a> /
+<a routerLink="./cancelled/delete?orderId={{order?.id}}"><span style="color: orange;">Cofnij anulacje</span></a><br>
+<hr>
 <div *ngIf="error; then errorThenBlock else errorElseBlock"></div>
 
 <ng-template #errorThenBlock>
