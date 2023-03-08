@@ -29,7 +29,7 @@ export class OrderEditComponent implements OnInit {
   returnBranch?: string;
   archive?: boolean;
   reasonForCancelingTheOrder?: string;
-  
+
   isData?: boolean;
   error?: boolean;
   errorMessage?: string;
@@ -42,7 +42,7 @@ export class OrderEditComponent implements OnInit {
 
   ngOnInit(): void {
     this.orderService.getOrder(this.route.snapshot.paramMap.get('id')).subscribe((data) => {
-      
+
       this.isData = true;
 
       this.id = data.id;
@@ -100,6 +100,7 @@ export class OrderEditComponent implements OnInit {
     }
 
     this.orderService.updateOrderById(this.id, order).subscribe((data) => {
+      alert("AKtualizacja danych zakończona sukcesem.");
       this.router.navigateByUrl(`/orders/${this.id}`);
     },
     (error: any) => {

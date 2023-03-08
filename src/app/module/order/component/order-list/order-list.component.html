@@ -20,8 +20,7 @@
         <a routerLink="./{{order.id}}">Pokaż szczegóły zlecenia</a><br>
         <a routerLink="/rentals/new?orderId={{order.id}}">Realizuj</a><br>
         <a routerLink="./{{order.id}}/edit">Edytuj</a><br>
-        <a routerLink="./cancelled?orderId={{order.id}}"><span style="color: orange;">Anulacja</span></a> /
-        <a routerLink="./cancelled/delete?orderId={{order.id}}"><span style="color: orange;">Cofnij anulacje</span></a><br>
+        <a routerLink="./{{order.id}}/archive"><span style="color: orange;">Anulacja</span></a><br>
         <button (click)="deleteOrderById(order.id)"><span style="color: red;">Usuń ( akceptacja kierownika )</span></button>
     </div>
 </ng-template>

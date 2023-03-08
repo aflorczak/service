@@ -12,13 +12,13 @@ export class OrderDetailsComponent implements OnInit {
   order?: Order;
   error?: boolean;
   errorMessage?: string;
-  
+
   constructor(
     private orderService: OrderService,
     private route: ActivatedRoute,
     private router: Router
   ) {}
-  
+
   getOrder(id: string | null): void {
     this.orderService.getOrder(id).subscribe(order => {
       this.order = order
@@ -30,6 +30,16 @@ export class OrderDetailsComponent implements OnInit {
       this.error = true;
       this.errorMessage = error.message;
     })
+  }
+
+  deleteOrderById(id: number | undefined): void {
+    this.orderService.deleteOderById(id).subscribe((data) => {
+        alert("Oparacja usunięcia zlecenia zakończona sukcesem.");
+        this.router.navigateByUrl("/orders");
+      },
+      (error: any) => {
+        alert("Oparacja usunięcia zlecenia zakończona porażką.");
+      })
   }
 
   ngOnInit(): void {

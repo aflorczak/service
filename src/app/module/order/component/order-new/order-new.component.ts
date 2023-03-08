@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NewOrder } from '../../interface/newOrder';
 import { OrderService } from '../../service/order.service';
+import {Route, Router} from "@angular/router";
 
 @Component({
   selector: 'app-order-new',
@@ -24,10 +25,11 @@ export class OrderNewComponent {
   returnTime?: string;
   returnComments?: string;
   returnBranch? : string;
-  
+
 
   constructor(
-    private orderService: OrderService
+    private orderService: OrderService,
+    private router: Router
   ) {
 
   }
@@ -68,10 +70,9 @@ export class OrderNewComponent {
       returnTime: this.returnTime,
       returnComments: this.returnComments,
       returnBranch: this.returnBranch,
-    }).subscribe((order: any) => {      
+    }).subscribe((order: any) => {
       alert("Tworzenie nowego zlecenia zakończone powodzeniem.");
-      this.resetForm();
-      this.buttonMessage = "Zapisz";
+      this.router.navigateByUrl(`/orders/${order.id}`);
     },
     (error: any) => {
       alert(error.message);
