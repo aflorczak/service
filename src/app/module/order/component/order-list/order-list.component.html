@@ -12,16 +12,34 @@
     {{emptyArray}}
     <!-- Napis że brak danych do wyświetlenia jak jest pusta tablica -->
     <div style="background-color: rgb(207, 216, 233); border-radius: 15px; padding: 15px;margin: 15px 0;" *ngFor="let order of orders">
-        Numer sprawy: <b>{{order.internalCaseNumber}}</b> <br>
-        Zewnętrzny numer sprawy: <b>{{order.externalCaseNumber}}</b> <br>
-        Dane klienta/klientów: <b>{{order.clientsData}}</b><br>
-        Podstawienie: <b>{{order.deliveryDate}}, {{order.deliveryTime}}, {{order.deliveryAddress}}</b><br>
-        Zwrot: <b>{{order.returnDate}}, {{order.returnTime}}, {{order.returnAddress}}</b><br>
-        <a routerLink="./{{order.id}}">Pokaż szczegóły zlecenia</a><br>
-        <a routerLink="/rentals/new?orderId={{order.id}}">Realizuj</a><br>
-        <a routerLink="./{{order.id}}/edit">Edytuj</a><br>
-        <a routerLink="./{{order.id}}/archive"><span style="color: orange;">Anulacja</span></a><br>
-        <button (click)="deleteOrderById(order.id)"><span style="color: red;">Usuń ( akceptacja kierownika )</span></button>
+        <div style="display: flex;justify-content: space-between;">
+          <div>
+            Numer sprawy: <b>{{order.internalCaseNumber}}</b> <br>
+            Zewnętrzny numer sprawy: <b>{{order.externalCaseNumber}}</b> <br>
+            Dane klienta/klientów: <b>{{order.clientsData}}</b><br>
+            Podstawienie: <b>{{order.deliveryDate}}, {{order.deliveryTime}}, {{order.deliveryAddress}}</b><br>
+            Zwrot: <b>{{order.returnDate}}, {{order.returnTime}}, {{order.returnAddress}}</b><br>
+            <a routerLink="./{{order.id}}">Pokaż szczegóły zlecenia</a><br>
+            <a routerLink="/rentals/new?orderId={{order.id}}">Realizuj</a><br>
+            <a routerLink="./{{order.id}}/edit">Edytuj</a><br>
+            <div *ngIf="order?.status !== 'CANCELLED'">
+              <button (click)="cancelledById(order.id)"><span style="color: orange;">Anulacja</span></button>
+            </div>
+            <div *ngIf="!order?.archive">
+              <button (click)="archiveById(order.id)"><span style="color: orange;">Archiwizuj</span></button>
+            </div>
+
+            <button (click)="deleteOrderById(order.id)"><span style="color: red;">Usuń ( akceptacja kierownika )</span></button>
+          </div>
+          <div>
+            <div *ngIf="order?.status === 'CANCELLED'">
+              <div style="background-color: red; color: white; padding: 5px; border-radius: 15px;">SPRAWA ANULOWANA: {{order?.reasonForCancelingTheOrder}}</div><br>
+            </div>
+            <div *ngIf="order?.archive">
+              <div style="background-color: orange; padding: 5px; border-radius: 15px;">SPRAWA ARCHIWALNA</div><br>
+            </div>
+          </div>
+        </div>
     </div>
 </ng-template>
 

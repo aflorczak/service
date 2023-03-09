@@ -43,7 +43,7 @@ export class OrderListComponent implements OnInit {
     this.orderService.deleteOderById(id).subscribe((data) => {
       alert("Oparacja usunięcia zlecenia zakończona sukcesem.");
       this.reload("/orders");
-    }, 
+    },
     (error: any) => {
       alert("Oparacja usunięcia zlecenia zakończona porażką.");
     })
@@ -53,5 +53,24 @@ export class OrderListComponent implements OnInit {
     this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
     this.router.navigate([url]);
   });
+  }
+
+  cancelledById(id: number | undefined): void {
+    let message = prompt("Powód anulacji: ");
+    this.orderService.moveToCancelledById(id, message).subscribe((data) => {
+      alert("Zlecenie zostało anulowane.");
+      this.reload(`/orders`);
+    }, (error: any) => {
+      alert(`Podczas wykonywania anulacji zlecenia wystąpił błąd: ${error.message}`);
+    });
+  }
+
+  archiveById(id: number | undefined): void {
+    this.orderService.moveToArchiveById(id).subscribe((data) => {
+      alert("Zlecenie zostało zarchiwizowane.");
+      this.reload(`/orders/${id}`);
+    }, (error: any) => {
+      alert(`Podczas wykonywania archiwizacji zlecenia wystąpił błąd: ${error.message}`);
+    });
   }
 }

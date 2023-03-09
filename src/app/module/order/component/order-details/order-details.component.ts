@@ -42,6 +42,31 @@ export class OrderDetailsComponent implements OnInit {
       })
   }
 
+  reload(url: string) {
+    this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
+      this.router.navigate([url]);
+    });
+  }
+
+  archiveById(id: number | undefined): void {
+    this.orderService.moveToArchiveById(id).subscribe((data) => {
+      alert("Zlecenie zostało zarchiwizowane.");
+      this.reload(`/orders/${id}`);
+    }, (error: any) => {
+      alert(`Podczas wykonywania archiwizacji zlecenia wystąpił błąd: ${error.message}`);
+    });
+  }
+
+  cancelledById(id: number | undefined): void {
+    let message = prompt("Powód anulacji: ");
+    this.orderService.moveToCancelledById(id, message).subscribe((data) => {
+      alert("Zlecenie zostało anulowane.");
+      this.reload(`/orders/${id}`);
+    }, (error: any) => {
+      alert(`Podczas wykonywania anulacji zlecenia wystąpił błąd: ${error.message}`);
+    });
+  }
+
   ngOnInit(): void {
     this.getOrder(this.route.snapshot.paramMap.get('id'));
   }

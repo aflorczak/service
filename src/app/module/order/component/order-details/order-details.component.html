@@ -1,7 +1,9 @@
 Dozwolone operacje:<br>
 <a routerLink="/rentals/new?orderId={{order?.id}}">Realizuj</a><br>
 <a routerLink="./edit">Edytuj</a><br>
-<a routerLink="./cancelled?orderId={{order?.id}}"><span style="color: orange;">Anulacja</span></a><br>
+<button (click)="cancelledById(order?.id)"><span style="color: orange;">Anulacja</span></button><br>
+<button (click)="archiveById(order?.id)"><span style="color: orange;">Archiwizuj</span></button><br>
+
 <button (click)="deleteOrderById(order?.id)"><span style="color: red;">Usuń ( akceptacja kierownika )</span></button>
 <hr>
 <div *ngIf="error; then errorThenBlock else errorElseBlock"></div>
@@ -15,8 +17,11 @@ Dozwolone operacje:<br>
 </ng-template>
 
 <ng-template #thenBlock>
-    Id zlecenia:<br>
-    {{order?.id}}<br><br>
+  <div *ngIf="order?.status === 'ACCEPTED'" style="color: green;font-size: 120%;">Sprawa przyjęta do realizacji</div>
+    <div *ngIf="order?.status === 'CANCELLED'" style="color: red;font-size: 120%;">Sprawa anulowana: {{order?.reasonForCancelingTheOrder}} </div>
+    <div *ngIf="order?.archive" style="color: orange;font-size: 120%;">Sprawa archiwalna</div>
+    Id zlecenia: <br>
+    {{order?.id}} <br><br>
     Altualny status:<br>
     {{order?.status}}<br><br>
     Dane klienta/ klientów:<br>
@@ -51,8 +56,6 @@ Dozwolone operacje:<br>
     {{order?.returnBranch}}<br><br>
     Czy sprawa jest zarchiwizowana:<br>
     {{order?.archive}}<br><br>
-    Komentarz do anulacji:<br>
-    {{order?.reasonForCancelingTheOrder}}<br><br>
 </ng-template>
 
 <ng-template #elseBlock>

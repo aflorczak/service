@@ -52,6 +52,14 @@ export class OrderService {
     return this.http.put(`http://localhost:8080/api/v-0.0.1/orders/${id}`, order);
   }
 
+  moveToArchiveById(id: number | undefined): Observable<any> {
+    return this.http.patch(`http://localhost:8080/api/v-0.0.1/orders/${id}/archive`, {});
+  }
+
+  moveToCancelledById(id: number | undefined, message: string | null) {
+    return this.http.patch(`http://localhost:8080/api/v-0.0.1/orders/${id}/cancelled`, {message: message});
+  }
+
   deleteOderById(id: number | undefined) : Observable<any> {
     return this.http.delete(`http://localhost:8080/api/v-0.0.1/orders/${id}`);
   }
