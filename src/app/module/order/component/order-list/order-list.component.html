@@ -20,7 +20,7 @@
             Podstawienie: <b>{{order.deliveryDate}}, {{order.deliveryTime}}, {{order.deliveryAddress}}</b><br>
             Zwrot: <b>{{order.returnDate}}, {{order.returnTime}}, {{order.returnAddress}}</b><br>
             <a routerLink="./{{order.id}}">Pokaż szczegóły zlecenia</a><br>
-            <a routerLink="/rentals/new?orderId={{order.id}}">Realizuj</a><br>
+            <a routerLink="/rentals/new" [queryParams]="{orderId: order.id}">Realizuj</a><br>
             <a routerLink="./{{order.id}}/edit">Edytuj</a><br>
             <div *ngIf="order?.status !== 'CANCELLED'">
               <button (click)="cancelledById(order.id)"><span style="color: orange;">Anulacja</span></button>

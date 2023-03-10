@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { ErrorModule } from './module/error/error.module';
 import { HomeModule } from './module/home/home.module';
 import { OrderModule } from './module/order/order.module';
+import { RentalModule } from './module/rental/rental.module';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { OrderModule } from './module/order/order.module';
     AppRoutingModule,
     OrderModule,
     HomeModule,
+    RentalModule,
     ErrorModule
   ],
   providers: [],

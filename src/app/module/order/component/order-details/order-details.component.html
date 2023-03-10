@@ -1,5 +1,5 @@
 Dozwolone operacje:<br>
-<a routerLink="/rentals/new?orderId={{order?.id}}">Realizuj</a><br>
+<a routerLink="/rentals/new" [queryParams]="{orderId: order?.id}">Realizuj</a><br>
 <a routerLink="./edit">Edytuj</a><br>
 <button (click)="cancelledById(order?.id)"><span style="color: orange;">Anulacja</span></button><br>
 <button (click)="archiveById(order?.id)"><span style="color: orange;">Archiwizuj</span></button><br>
